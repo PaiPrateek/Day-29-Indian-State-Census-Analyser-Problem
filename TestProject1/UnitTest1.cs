@@ -12,6 +12,7 @@ namespace TestProject1
         static string indianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
 
         static string indianStateCensusFilePath = @"E:\LFP158\Assignment\Day 29\IndianStateCensusAnalyserProblem\IndianStateCensusAnalyserProblem\CSV\IndiaStateCensusData.csv";
+        static string wrongIndianStateCensusFilePath = @"E:\LFP158\Assignment\Day 29\IndianStateCensusAnalyserProblem\IndianStateCensusAnalyserProblem\CSV\IndiaData.csv";
 
         IndianStateCensusAnalyserProblem.CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecord;
@@ -31,6 +32,14 @@ namespace TestProject1
         {
             totalRecord = censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA, indianStateCensusFilePath, indianStateCensusHeaders);
             Assert.AreEqual(5, totalRecord.Count);
+        }
+        //Wrong File Path
+        //Tc 1.2 -  While giving incorrect CSV File it should Returns a custom Exception
+        [Test]
+        public void GivenWrongIndianCensusCodeFilePath_WhenRead_ShouldReturn_FILE_NOT_FOUND()
+        {
+            var censusException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA, wrongIndianStateCensusFilePath, indianStateCensusHeaders));
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND, censusException.eType);
         }
     }
 }
