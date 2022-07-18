@@ -16,6 +16,7 @@ namespace IndianStateCensusAnalyserProblem
         static string wrongHeaderIndianCensusFilePath = @"E:\LFP158\Assignment\Day 29\IndianStateCensusAnalyserProblem\IndianStateCensusAnalyserProblem\CSV\WrongIndiaStateCensusData.csv";
 
         static string indianStateCodeFilePath = @"E:\LFP158\Assignment\Day 29\IndianStateCensusAnalyserProblem\IndianStateCensusAnalyserProblem\CSV\IndiaStateCodes.csv";
+        static string wrongIndianStateCodeFilePath = @"E:\LFP158\Assignment\Day 29\IndianStateCensusAnalyserProblem\IndianStateCensusAnalyserProblem\CSV\StateCodeData.csv";
 
 
         static void Main(string[] args)
@@ -40,6 +41,9 @@ namespace IndianStateCensusAnalyserProblem
 
             // Loading the State census Data File
             indianCensusAdapter.LoadCensusData(indianStateCodeFilePath, indianStateCodeHeaders);
+
+            //2.2
+            indianCensusAdapter.LoadCensusData(wrongIndianStateCodeFilePath, indianStateCodeHeaders);
         }
     }
 }
