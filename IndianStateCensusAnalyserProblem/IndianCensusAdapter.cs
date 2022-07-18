@@ -25,27 +25,18 @@ namespace IndianStateCensusAnalyserProblem
                 if (csvFilePath.Contains("IndiaStateCodes.csv"))
                 {
                     dataMap.Add(column[1], new CensusDTO(new StateCodeDAO(column[0], column[1], column[2], column[3])));
-                    foreach (KeyValuePair<string, CensusDTO> kv in dataMap)
-                    {
-                        Console.WriteLine(kv.Key + " " + kv.Value);
-                    }
+
                 }
                     
                 if (csvFilePath.Contains("IndiaStateCensusData.csv"))
                 {
                     dataMap.Add(column[0], new CensusDTO(new CensusDataDAO(column[0], column[1], column[2], column[3])));
-                    foreach(KeyValuePair<string,CensusDTO> kv in dataMap)
-                    {
-                        Console.WriteLine(kv.Key + " " + kv.Value);
-                    }
+
                 }
                     
             }
             return dataMap.ToDictionary(p => p.Key, p => p.Value);
-            foreach(var value in dataMap.Values)
-            {
-                Console.WriteLine(value);
-            }
+
         }
     }
 }
